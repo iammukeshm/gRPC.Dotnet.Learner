@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+service Product{
+
+	rpc GetProductById (GetProductByIdModel) returns (ProductModel);
+	rpc GetAllProducts (GetAllProductsRequest) returns (stream ProductModel);
+}
+
+message GetProductByIdModel{
+	int32 productId = 1;
+}
+
+message GetAllProductsRequest{
+
+}
+
+message ProductModel{
+	int32 productId = 1;
+	string name = 2;
+	string description = 3;
+	float price =4;
+}
